@@ -13,4 +13,6 @@ class Job(models.Model):
     #migrate
 
     #add to the admin.py in jobs
-    
+
+    def __str__(self):
+        return self.summary

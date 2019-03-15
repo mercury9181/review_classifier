@@ -1,4 +1,6 @@
 
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -38,30 +40,30 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item ">
-            <a class="nav-link" href="{% url 'allblogs' %}">Reviews</a>
-          </li>
-          {% if user.is_authenticated %}
-          <li class="nav-item ">
-            <a class="nav-link" href="{% url 'givereview' %}">Give a review!</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="javascript:document.getElementById('logout').submit()">Logout!</a>
-            <form class="" id="logout" action="{% url 'logout' %}" method="POST">
-              {% csrf_token %}
-                  <input type="hidden" >
-            </form>
-          </li>
-          {% else %}
-          <li class="nav-item ">
-            <a class="nav-link" href="{% url 'signup' %}">signup!</a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="{% url 'login' %}">login!</a>
-          </li>
-          {% endif %}
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="{% url 'allblogs' %}">Review</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item ">
+          <a class="nav-link" href="{% url 'givereview' %}">Give a review!</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="javascript:document.getElementById('logout').submit()">Logout!</a>
+          <form class="" id="logout" action="{% url 'logout' %}" method="POST">
+            {% csrf_token %}
+                <input type="hidden" >
+          </form>
+        </li>
+        {% else %}
+        <li class="nav-item ">
+          <a class="nav-link" href="{% url 'signup' %}">signup!</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="{% url 'login' %}">login!</a>
+        </li>
+        {% endif %}
 
-        </ul>
+      </ul>
 
       </div>
     </nav>
@@ -69,31 +71,17 @@
   </header>
 
   <main role="main">
-
-    <section class="jumbotron text-center">
-      <div class="container">
-            {% if user.is_authenticated %}
-                 <h1 class="jumbotron-heading">Hey {{request.user}}!!</h1>
-            {% else %}
-                  <h1 class="jumbotron-heading">Hey People!!!</h1>
-            {% endif %}
-
-
-        <p class="lead text-muted">My name is Rahat Hassan. Welcome to my review classifier website</p>
-
-        <img src="{% static 'r.jpg' %}" height="300" width="250" alt="">
-        <p>
-          <a href="mailto:mercury9181@gmail.com" class="btn btn-primary my-2">Email me</a>
-        </p>
-      </div>
-    </section>
+<div class="container">
+  <br><br>
+  <img class="img-fluid" src="{{blog.image.url}}" height="300" width="300" alt="">
+  <h1>{{blog.title}}</h1>
+    <h2>Place- {{blog.location}}</h2>
+      <h3>rating: {{blog.rating}}</h3>
+  <p>{{blog.body}}</p>
 
 
-      <div class="container">
+</div>
 
-
-
-      </div>
 
 
   </main>
